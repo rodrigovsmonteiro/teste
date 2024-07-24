@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog com as últimas notícias e artigos sobre diversos temas.">
+    <meta name="keywords" content="notícias, artigos, blog, economia, tecnologia, marketing">
+    <title>Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .article-card {
+                flex-direction: row;
+                height: auto;
+            }
+
+            .article-card img {
+                width: 50%;
+            }
+        }
+
+        .swiper-slide img {
+            object-fit: cover;
+        }
+
+        .widget {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .widget h3 {
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .widget a {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a202c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .widget a:hover {
+            color: #3182ce;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar Fixa e Transparente -->
+    <header class="fixed top-0 w-full z-50 bg-white shadow-md">
+        <nav class="max-w-screen-xl container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-black">
+                    <img src="/frontend/images/logobg.png" alt="Logo" class="h-16">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 relative">
+                <a href="noticias.html" class="text-gray-900 hover:text-sky-600 font-semibold">Notícias</a>
+                <a href="artigos.html" class="text-gray-900 hover:text-sky-600 font-semibold">Artigos</a>
+                <div class="relative group">
+                    <button id="tools-button" class="text-gray-900 hover:text-sky-600 font-semibold flex items-center">
+                        Ferramentas
+                        <svg id="tools-dropdown-icon" class="ml-2 w-4 h-4 transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="tools-dropdown"
+                        class="absolute hidden group-hover:block bg-white shadow-lg mt-0 rounded-md py-2"
+                        style="min-width: 200px;">
+                        <a href="#ferramenta1"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Ferramenta
+                            1</a>
+                        <a href="#ferramenta2"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Ferramenta
+                            2</a>
+                        <a href="#ferramenta3"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Ferramenta
+                            3</a>
+                        <a href="#ferramenta4"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Ferramenta
+                            4</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <a href="https://onvio.com.br/br-portal-do-cliente/" target="_blank"
+                    class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-md shadow-lg transition duration-300 mr-4">
+                    AOB Contábil
+                </a>
+            </div>
+            <button class="block md:hidden focus:outline-none" id="menu-button">
+                <svg class="w-6 h-6 text-black hover:text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white bg-opacity-75" id="menu">
+            <a href="noticias.html" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Notícias</a>
+            <a href="artigos.html" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Artigos</a>
+            <a href="#ferramentas" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Ferramentas</a>
+            <a href="https://onvio.com.br/br-portal-do-cliente/" target="_blank"
+                class="block bg-sky-600 text-white text-center px-4 py-2 rounded-md shadow hover:bg-sky-700">AOB
+                Contábil</a>
+        </div>
+    </header>
+    <!-- JavaScript for mobile dropdown -->
+    <script>
+        // Mostrar e ocultar menu no mobile
+        document.getElementById('menu-button').addEventListener('click', function () {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+
+        document.querySelectorAll('#menu a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href').substring(1);
+                var targetElement = document.getElementById(targetId);
+                var offsetPosition = targetElement.offsetTop - 175;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                document.getElementById('menu').style.display = 'none';
+            });
+        });
+    </script>
+
+    <!-- Latest Articles Section -->
+    <section class="max-w-screen-xl container mx-auto px-6 py-8 pt-28">
+        <h2 class="text-3xl font-bold mb-6 text-sky-600">Últimas 5 Notícias</h2>
+        <div class="swiper latestArticlesSwiper mb-6">
+            <div class="swiper-wrapper" id="latest-articles-section">
+                <!-- Latest articles will be injected here -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+
+    <!-- Featured Articles Section -->
+    <section class="max-w-screen-xl container mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold mb-6 text-sky-600">Artigos em Destaque</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="featured-articles-section">
+            <!-- Articles will be injected here -->
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="max-w-screen-xl container mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold mb-6 text-sky-600">Categorias</h2>
+        <div class="flex flex-wrap gap-4" id="categories-section">
+            <!-- Categories will be injected here -->
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="max-w-screen-xl container mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold mb-6 text-sky-600">Últimas Notícias e Artigos</h2>
+        <div id="filter-container" class="flex items-center mb-4 space-x-4">
+            <div id="active-filter"></div>
+            <button id="clear-filter-button"
+                class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 hidden" onclick="clearFilter()"
+                aria-label="Limpar Filtro">Limpar Filtro</button>
+        </div>
+        <input type="text" id="search-input" class="w-full p-2 mb-4 border rounded" placeholder="Buscar posts...">
+        <div class="space-y-6" id="latest-news-section">
+            <!-- News will be injected here -->
+        </div>
+        <div class="flex justify-center mt-4" id="pagination-controls">
+            <!-- Pagination buttons will be injected here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="relative text-sky-600 py-8 bg-gradient-to-b from-white via-gray-100 to-gray-200">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div
+                class="reveal relative container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-start md:items-start gap-10 px-4 z-10">
+                <div>
+                    <a href="#" class="text-2xl font-bold">
+                        <img src="/frontend/images/logobg.png" alt="AOB Contábil"
+                            class="w-64 md:-mt-4 md:-ml-6 mx-auto">
+                    </a>
+                    <h3 class="text-xl font-semibold mt-2 mb-2 text-sky-600">AOB Contabilidade</h3>
+                    <p class="mb-2 text-black">CNPJ: 25.344.574/0001-08</p>
+                    <p class="mb-2 text-black">Marca registrada | Processo nº: 910926310/2018</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Contato</h4>
+                    <p class="text-black">Rua Barão do Triunfo - 427 - Conjunto 1301, Brooklin,<br> São Paulo - SP,
+                        04602-001</p>
+                    <p class="text-black">(11) 2339-4043<i class="fab fa-whatsapp text-lg ml-1 text-green-600"></i></p>
+                    <p class="text-black">contato@aobcontabil.com.br</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600 mt-0 lg:mt-0">Links Rápidos</h4>
+                    <ul class="text-black">
+                        <li class="mb-2 hover:text-sky-600"><a href="https://www.seusite.com">Site</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="#sobre">Sobre</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/blog">Blog</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Redes Sociais</h4>
+                    <ul class="text-black">
+                        <li>
+                            <a href="https://www.instagram.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram text-2xl mr-2 text-red-900"></i>Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook text-2xl mr-2 text-blue-900"></i>Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com.br/@aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube text-2xl -ml-0 mr-2 text-red-500"></i>Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/company/aob-contabilidade"
+                                class="flex mb-2 hover:text-sky-600" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin text-2xl mr-2 text-gray-900"></i>LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.x.com.br/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-x-twitter text-2xl -ml-0 mr-2 text-black"></i>Twitter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.inputmask.min.js"></script>
+    <script src="../js/chart.min.js"></script>
+    <script src="../js/swiper-bundle.min.js"></script>
+    <script src="../js/scrollreveal.min.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                // Fetch and display posts
+                const response = await fetch('http://localhost:1337/api/posts?populate=imagem,tags');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log('Fetched posts data:', data); // Log the full response data
+                const posts = data.data;
+
+                if (!Array.isArray(posts) || posts.length === 0) {
+                    console.warn('No posts found');
+                    return;
+                }
+
+                const featuredArticlesSection = document.getElementById('featured-articles-section');
+                const latestNewsSection = document.getElementById('latest-news-section');
+                const latestArticlesSection = document.getElementById('latest-articles-section'); // New section
+                const activeFilterDiv = document.getElementById('active-filter');
+                const clearFilterButton = document.getElementById('clear-filter-button');
+                const searchInput = document.getElementById('search-input');
+                const paginationControls = document.getElementById('pagination-controls');
+                const oneDayInMillis = 24 * 60 * 60 * 1000;
+                const now = new Date();
+                let currentPage = 1;
+                const postsPerPage = 10;
+
+                let mostAccessedCount = 0;
+
+                posts.sort((a, b) => new Date(b.attributes.data) - new Date(a.attributes.data)); // Sort posts by date descending
+
+                function displayPosts(postsToDisplay, section, layout) {
+                    section.innerHTML = '';
+                    postsToDisplay.forEach(post => {
+                        const imageUrl = post.attributes.imagem?.data?.length > 0 && post.attributes.imagem.data[0]?.attributes?.url
+                            ? `http://localhost:1337${post.attributes.imagem.data[0].attributes.url}`
+                            : '/frontend/images/400x200.png';
+                        const title = post.attributes.titulo || 'Título não disponível';
+                        const subtitle = post.attributes.subtitulo || '';
+                        const author = post.attributes.autor || 'Autor desconhecido';
+                        const postDate = new Date(post.attributes.data);
+                        const timeDiffMillis = now - postDate;
+                        const timeDiffHours = Math.floor(timeDiffMillis / (1000 * 60 * 60));
+                        const timeDiffMinutes = Math.floor((timeDiffMillis % (1000 * 60 * 60)) / (1000 * 60));
+                        const timeDiffDays = Math.floor(timeDiffHours / 24);
+                        let timeDiff;
+
+                        if (timeDiffDays > 0) {
+                            timeDiff = `${timeDiffDays} dias atrás`;
+                        } else {
+                            timeDiff = timeDiffHours > 0 ? `${timeDiffHours} horas e ${timeDiffMinutes} minutos atrás` : `${timeDiffMinutes} minutos atrás`;
+                        }
+                        const tags = post.attributes.tags?.data || [];
+
+                        const postHTML = layout === 'column'
+                            ? `
+                    <a href="post.html?id=${post.id}" class="block">
+                        <article class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full transition transform hover:text-sky-600 hover:underline">
+                            <img data-src="${imageUrl}" alt="${title}" class="lazy w-full h-48 object-cover">
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">${title}</h3>
+                                    <h4 class="text-md mb-2">${subtitle}</h4>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Por <span class="font-semibold">${author}</span> em ${timeDiff}</p>
+                                    ${post.attributes.fonte ? `<p class="text-sm text-gray-600"><span class="font-semibold">Fonte:</span> ${post.attributes.fonte}</p>` : ''}
+                                    <div class="mt-4 flex flex-wrap">
+                                        ${tags.map(tag => `<span class="inline-block bg-sky-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2">#${tag.attributes.nome}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                    `
+                            : `
+                    <a href="post.html?id=${post.id}" class="block">
+                        <article class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row h-fit md:h-52 md:min-w-600px transition transform hover:text-sky-600 hover:underline">
+                            <img data-src="${imageUrl}" alt="${title}" class="lazy w-full md:w-1/3 h-52 object-cover">
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">${title}</h3>
+                                    <h4 class="text-md mb-2">${subtitle}</h4>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Por <span class="font-semibold">${author}</span> em ${timeDiff}</p>
+                                    ${post.attributes.fonte ? `<p class="text-sm text-gray-600"><span class="font-semibold">Fonte:</span> ${post.attributes.fonte}</p>` : ''}
+                                    <div class="mt-4 flex flex-wrap">
+                                        ${tags.map(tag => `<span class="inline-block bg-sky-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2">#${tag.attributes.nome}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                    `;
+                        section.innerHTML += postHTML;
+                    });
+                    lazyLoadImages();
+                }
+
+                function lazyLoadImages() {
+                    const lazyImages = document.querySelectorAll('.lazy');
+                    lazyImages.forEach(img => {
+                        const observer = new IntersectionObserver(entries => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    img.src = img.getAttribute('data-src');
+                                    observer.unobserve(img);
+                                }
+                            });
+                        });
+                        observer.observe(img);
+                    });
+                }
+
+                function displayLatestNewsPage(page, posts) {
+                    const start = (page - 1) * postsPerPage;
+                    const end = start + postsPerPage;
+                    const paginatedPosts = posts.slice(start, end);
+                    displayPosts(paginatedPosts, latestNewsSection, 'row');
+                }
+
+                function createPaginationControls(totalPosts) {
+                    paginationControls.innerHTML = '';
+                    const totalPages = Math.ceil(totalPosts / postsPerPage);
+                    for (let i = 1; i <= totalPages; i++) {
+                        const button = document.createElement('button');
+                        button.className = 'px-4 py-2 border rounded mx-1 hover:text-sky-600 transition transform hover:border-sky-600';
+                        button.innerText = i;
+                        button.onclick = () => {
+                            currentPage = i;
+                            displayLatestNewsPage(currentPage, posts);
+                        };
+                        paginationControls.appendChild(button);
+                    }
+                }
+
+                // Initial display of all posts
+                displayPosts(posts.filter(post => post.attributes.tipo === 'Artigo' && post.attributes.destaque === true).slice(0, 6), featuredArticlesSection, 'column');
+
+                lazyLoadImages();
+
+                displayLatestNewsPage(currentPage, posts);
+                createPaginationControls(posts.length);
+
+                // Display latest 5 articles
+                const latestFivePosts = posts.filter(post => post.attributes.tipo === 'Notícia').slice(0, 5);
+                latestFivePosts.forEach(post => {
+                    const imageUrl = post.attributes.imagem?.data?.length > 0 && post.attributes.imagem.data[0]?.attributes?.url
+                        ? `http://localhost:1337${post.attributes.imagem.data[0].attributes.url}`
+                        : '/frontend/images/400x200.png';
+                    const title = post.attributes.titulo || 'Título não disponível';
+                    const subtitle = post.attributes.subtitulo || '';
+                    const author = post.attributes.autor || 'Autor desconhecido';
+                    const postDate = new Date(post.attributes.data);
+                    const timeDiffMillis = now - postDate;
+                    const timeDiffHours = Math.floor(timeDiffMillis / (1000 * 60 * 60));
+                    const timeDiffMinutes = Math.floor((timeDiffMillis % (1000 * 60 * 60)) / (1000 * 60));
+                    const timeDiffDays = Math.floor(timeDiffHours / 24);
+                    let timeDiff;
+
+                    if (timeDiffDays > 0) {
+                        timeDiff = `${timeDiffDays} dias atrás`;
+                    } else {
+                        timeDiff = timeDiffHours > 0 ? `${timeDiffHours} horas e ${timeDiffMinutes} minutos atrás` : `${timeDiffMinutes} minutos atrás`;
+                    }
+
+                    const storyHTML = `
+            <div class="swiper-slide w-full transition transform hover:text-sky-600 hover:underline">
+                <a href="post.html?id=${post.id}" class="block">
+                    <img src="${imageUrl}" alt="${title}" class="w-full h-1/4 object-cover max-h-96 rounded-lg shadow-md">
+                    <div class="p-4 mb-4">
+                        <h3 class="text-xl font-bold">${title}</h3>
+                        <h4 class="text-md mb-2">${subtitle}</h4>
+                        <p class="text-sm text-gray-600">Por <span class="font-semibold">${author}</span> em ${timeDiff}</p>
+                    </div>
+                </a>
+            </div>
+            `;
+                    latestArticlesSection.innerHTML += storyHTML;
+                });
+
+                // Initialize Swiper for latest articles
+                new Swiper('.latestArticlesSwiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 40,
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }
+                });
+
+                // Fetch and display tags as categories
+                const tagsResponse = await fetch('http://localhost:1337/api/tags');
+                if (!tagsResponse.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const tagsData = await tagsResponse.json();
+                console.log('Fetched tags data:', tagsData); // Log the full response data
+                const tags = tagsData.data;
+
+                if (!Array.isArray(tags) || tags.length === 0) {
+                    console.warn('No tags found');
+                    return;
+                }
+
+                const categoriesSection = document.getElementById('categories-section');
+                tags.forEach(tag => {
+                    const tagHTML = `
+            <button class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600" onclick="filterPostsByTag('${tag.attributes.nome}')">${tag.attributes.nome}</button>
+        `;
+                    categoriesSection.innerHTML += tagHTML;
+                });
+
+                // Function to filter posts by tag
+                window.filterPostsByTag = function (tagName) {
+                    const filteredPosts = posts.filter(post => post.attributes.tags.data.some(tag => tag.attributes.nome === tagName));
+                    displayLatestNewsPage(1, filteredPosts);
+                    createPaginationControls(filteredPosts.length);
+                    activeFilterDiv.innerHTML = `<span class="bg-sky-300 text-gray-700 px-4 py-2 rounded-lg">Filtrando por: ${tagName}</span>`;
+                    clearFilterButton.classList.remove('hidden');
+                };
+
+                // Function to clear filter and show all posts
+                window.clearFilter = function () {
+                    displayLatestNewsPage(1, posts);
+                    createPaginationControls(posts.length);
+                    activeFilterDiv.innerHTML = '';
+                    clearFilterButton.classList.add('hidden');
+                };
+
+                // Search functionality
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const filteredPosts = posts.filter(post =>
+                        post.attributes.titulo.toLowerCase().includes(searchTerm) ||
+                        post.attributes.subtitulo.toLowerCase().includes(searchTerm) ||
+                        post.attributes.autor.toLowerCase().includes(searchTerm)
+                    );
+                    displayLatestNewsPage(1, filteredPosts);
+                    createPaginationControls(filteredPosts.length);
+                });
+
+                // Initialize Swiper for featured articles
+                new Swiper('.blogSwiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 40,
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }
+                });
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOB Contábil - BPO Financeiro</title>
+    <!-- Importação de Estilos e Scripts Externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="../js/scrollreveal.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.inputmask.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+    <style>
+        .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: stretch;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-white via-gray-100 to-gray-200">
+    <!-- Navbar Fixa e Transparente -->
+    <header class="fixed top-0 w-full z-50 bg-white navbar">
+        <!-- Navbar -->
+        <nav class="max-w-screen-xl container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center">
+                <a href="/teste#home" class="text-2xl font-bold text-black">
+                    <img src="../images/logobg.png" alt="AOB Contábil" class="h-16">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 relative">
+                <a href="/teste#home" class="text-gray-900 hover:text-sky-600 font-semibold">Início</a>
+                <div class="relative group">
+                    <button id="services-button"
+                        class="text-gray-900 hover:text-sky-600 font-semibold flex items-center">
+                        Serviços
+                        <svg id="dropdown-icon-services" class="ml-2 w-4 h-4 transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="services-dropdown" class="absolute hidden bg-white shadow-lg mt-0 rounded-md py-2"
+                        style="min-width: 200px;">
+                        <a href="/teste/abertura-de-empresa/"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Abertura de
+                            Empresa</a>
+                        <a href="/teste/bpo-financeiro/"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">BPO
+                            Financeiro</a>
+                        <div class="relative group">
+                            <button id="consultoria-button"
+                                class="block w-full px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100 flex items-center">
+                                Consultoria
+                                <svg id="dropdown-icon-consultoria"
+                                    class="ml-2 w-4 h-4 transition-transform duration-300" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="consultoria-dropdown"
+                                class="absolute hidden bg-white shadow-lg mt-0 rounded-md py-2"
+                                style="min-width: 200px; left: 100%; top: 0;">
+                                <a href="/teste/consultoria/consultoria-tributaria.html"
+                                    class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                    Tributária</a>
+                                <a href="/teste/consultoria/consultoria-contabil.html"
+                                    class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                    Contábil</a>
+                                <a href="/teste/consultoria/consultoria-dp.html"
+                                    class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                    Departamento
+                                    Pessoal</a>
+                            </div>
+                        </div>
+
+                        <a href="/teste/contabilidade"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Contabilidade
+                            Completa</a>
+
+                        <a href="/teste/trocar-contador/"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Trocar de
+                            Contador</a>
+                    </div>
+                </div>
+                <a href="/teste/#sobre" class="text-gray-900 hover:text-sky-600 font-semibold">Sobre</a>
+                <div class="relative group">
+                    <button id="blog-button" class="text-gray-900 hover:text-sky-600 font-semibold flex items-center">
+                        Ferramentas
+                        <svg id="dropdown-icon-blog" class="ml-2 w-4 h-4 transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="blog-dropdown" class="absolute hidden bg-white shadow-lg mt-0 rounded-md py-2"
+                        style="min-width: 200px;">
+                        <a href="/teste/ferramentas/calculadora-hora-extra.html"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora
+                            de
+                            Hora Extra</a>
+                        <a href="/teste/ferramentas/calculadora-simples-nacional.html"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora do
+                            Simples Nacional</a>
+                    </div>
+                </div>
+                <a href="/teste/#contato" class="text-gray-900 hover:text-sky-600 font-semibold">Contato</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="https://onvio.com.br/br-portal-do-cliente/" target="_blank"
+                    class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-md shadow-lg transition duration-300 mr-4">
+                    Portal do Cliente
+                </a>
+            </div>
+            <button class="block md:hidden focus:outline-none" id="menu-button">
+                <svg class="w-6 h-6 text-black hover:text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Navbar Mobile -->
+        <div class="hidden md:hidden bg-white bg-opacity-75" id="menu">
+            <a href="/teste/#home" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Início</a>
+            <div class="relative">
+                <button id="mobile-services-button"
+                    class="block text-gray-900 hover:text-sky-600 px-4 py-2 w-full text-left flex items-center justify-between">
+                    Serviços
+                    <svg id="mobile-services-icon" class="ml-2 w-4 h-4" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobile-services-dropdown" class="hidden bg-white shadow-lg mt-0 rounded-md py-2 w-full">
+                    <a href="/teste/abertura-de-empresa/"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Abertura de
+                        Empresa</a>
+                    <a href="/teste/bpo-financeiro/"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">BPO
+                        Financeiro</a>
+                    <div class="relative group">
+                        <button id="mobile-consultoria-button"
+                            class="block text-gray-900 hover:text-sky-600 px-4 py-2 w-full text-left flex items-center justify-between">
+                            Consultoria
+                            <svg id="mobile-consultoria-icon" class="ml-2 w-4 h-4 transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+                        <div id="mobile-consultoria-dropdown"
+                            class="hidden bg-white shadow-lg mt-0 rounded-md py-2 w-full">
+                            <a href="/teste/consultoria/consultoria-tributaria.html"
+                                class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                Tributária</a>
+                            <a href="/teste/consultoria/consultoria-contabil.html"
+                                class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                Contábil</a>
+                            <a href="/teste/consultoria/consultoria-dp.html"
+                                class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                Departamento Pessoal</a>
+                        </div>
+                    </div>
+                    <a href="/teste/contabilidade"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Contabilidade
+                        Completa</a>
+
+                    <a href="/teste/trocar-contador/"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Trocar de
+                        Contador</a>
+                </div>
+            </div>
+            <a href="/teste/#sobre" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Sobre</a>
+            <div class="relative">
+                <button id="mobile-blog-button"
+                    class="block text-gray-900 hover:text-sky-600 px-4 py-2 w-full text-left flex items-center justify-between">
+                    Ferramentas
+                    <svg id="mobile-blog-icon" class="ml-2 w-4 h-4" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobile-blog-dropdown" class="hidden bg-white shadow-lg mt-0 rounded-md py-2 w-full">
+                    <a href="/teste/ferramentas/calculadora-hora-extra.html"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora de Hora
+                        Extra</a>
+                    <a href="/teste/ferramentas/calculadora-simples-nacional.html"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora do
+                        Simples Nacional</a>
+                </div>
+            </div>
+            <a href="/teste/#contato" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Contato</a>
+            <a href="https://onvio.com.br/br-portal-do-cliente/" target="_blank"
+                class="block bg-sky-600 text-white text-center px-4 py-2 rounded-md shadow hover:bg-sky-700">Portal do
+                Cliente</a>
+        </div>
+
+    </header>
+
+    <div class="h-fit 2xl:h-screen bg-gradient-to-b from-white via-gray-100 to-gray-200 ">
+        <!-- Breadcrumb Navigation -->
+        <nav class="reveal-scale max-w-screen-xl px-6 py-4 pt-28 2xl:pt-40 mx-auto">
+            <ol class="list-reset flex px-2">
+                <li><a href="/teste/" class="text-sky-600 hover:text-sky-700">Início</a></li>
+                <li><span class="mx-2 text-gray-500">/</span></li>
+                <li class="text-gray-500">BPO Financeiro</li>
+            </ol>
+        </nav>
+
+        <!-- Seção Home -->
+        <section id="home" class="reveal max-w-screen-xl px-4 mb-8 mx-auto">
+            <h1 class="text-sky-600 text-4xl font-bold mb-4 px-4">BPO Financeiro</h1>
+            <div class="flex flex-col text-black px-4">
+                <p class="text-lg md:text-xl mb-8">
+                    Na <span class="font-semibold">AOB Contábil</span>, nosso serviço de BPO Financeiro oferece uma
+                    solução abrangente para gerenciar todas as funções financeiras da sua empresa. Desde a contabilidade
+                    até o controle financeiro, garantimos eficiência e precisão em cada etapa.
+                </p>
+                <div class="flex justify-start lg:flex">
+                    <!-- Botão para abrir o modal de Contato -->
+                    <button
+                        class="open-bpo-modal bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-20 rounded-md shadow-lg transition duration-300">
+                        Solicite Agora
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Detalhes -->
+        <section id="detalhes" class="reveal-scale max-w-screen-xl px-6 py-8 mt-28 md:-mt-10 xl:mt-0 mx-auto">
+            <h2 class="text-3xl font-bold text-center text-sky-600 mb-8">Por que escolher nosso BPO Financeiro?</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Detalhe 1 -->
+                <div
+                    class=" bg-white rounded-lg shadow p-6 flex flex-col transition duration-300 transform hover:scale-105">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Especialização</h3>
+                    <p class="text-gray-600 mb-4">Nossa equipe é composta por especialistas em finanças e contabilidade,
+                        prontos para oferecer as melhores soluções para sua empresa.</p>
+                </div>
+                <!-- Detalhe 2 -->
+                <div
+                    class=" bg-white rounded-lg shadow p-6 flex flex-col transition duration-300 transform hover:scale-105">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Eficiência</h3>
+                    <p class="text-gray-600 mb-4">Utilizamos as melhores práticas e tecnologias para garantir a
+                        eficiência e a precisão nos processos financeiros.</p>
+                </div>
+                <!-- Detalhe 3 -->
+                <div
+                    class=" bg-white rounded-lg shadow p-6 flex flex-col transition duration-300 transform hover:scale-105">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Conformidade</h3>
+                    <p class="text-gray-600 mb-4">Garantimos que sua empresa está em conformidade com todas as
+                        regulamentações financeiras e fiscais vigentes.</p>
+                </div>
+                <!-- Detalhe 4 -->
+                <div
+                    class=" bg-white rounded-lg shadow p-6 flex flex-col transition duration-300 transform hover:scale-105">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Suporte Dedicado</h3>
+                    <p class="text-gray-600 mb-4">Oferecemos suporte personalizado para atender todas as necessidades
+                        financeiras da sua empresa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botão para descer -->
+        <div id="scrollDown" class="reveal scroll-down z-10 flex justify-center">
+            <a class="hidden sm:hidden md:hidden lg:hidden xl:flex" href="#client"><i
+                    class="fas fa-chevron-down text-sky-600 text-2xl"></i></a>
+        </div>
+    </div>
+
+    <!-- Seção de Depoimentos com Carrossel -->
+    <section id="client" class="bg-white py-12">
+        <div class="reveal max-w-screen-xl mx-auto px-4 py-8">
+            <h2 class="text-4xl font-bold text-center text-sky-600 mb-8">Depoimentos sobre nosso Serviço</h2>
+            <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper">
+                    <!-- Depoimento 1 -->
+                    <div class="swiper-slide bg-white p-6 rounded-lg shadow">
+                        <div class="testimonial-card">
+                            <p class="text-gray-600 mb-4">"A AOB Contábil transformou a gestão financeira da nossa
+                                empresa. Eles são profissionais e extremamente competentes."</p>
+                            <p class="font-semibold text-gray-800">- Carlos Silva</p>
+                        </div>
+                    </div>
+                    <!-- Depoimento 2 -->
+                    <div class="swiper-slide bg-white p-6 rounded-lg shadow">
+                        <div class="testimonial-card">
+                            <p class="text-gray-600 mb-4">"Com o BPO Financeiro da AOB Contábil, nossa empresa ganhou
+                                eficiência e clareza nas finanças."</p>
+                            <p class="font-semibold text-gray-800">- Fernanda Lima</p>
+                        </div>
+                    </div>
+                    <!-- Depoimento 3 -->
+                    <div class="swiper-slide bg-white p-6 rounded-lg shadow">
+                        <div class="testimonial-card">
+                            <p class="text-gray-600 mb-4">"Excelente serviço de BPO Financeiro. Recomendo a todos que
+                                precisam de uma gestão financeira eficaz."</p>
+                            <p class="font-semibold text-gray-800">- João Pereira</p>
+                        </div>
+                    </div>
+                    <!-- Depoimento 4 -->
+                    <div class="swiper-slide bg-white p-6 rounded-lg shadow">
+                        <div class="testimonial-card">
+                            <p class="text-gray-600 mb-4">"O serviço da AOB Contábil foi essencial para a nossa empresa.
+                                A equipe é
+                                extremamente profissional e sempre pronta para ajudar."</p>
+                            <p class="font-semibold text-gray-800">- Maria Oliveira</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Adicionando paginador -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var testimonialSwiper = new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            }
+        });
+
+        const slides = document.querySelectorAll('.swiper-slide');
+        slides.forEach(slide => {
+            slide.addEventListener('mouseenter', () => {
+                testimonialSwiper.autoplay.stop();
+            });
+            slide.addEventListener('mouseleave', () => {
+                testimonialSwiper.autoplay.start();
+            });
+        });
+    </script>
+
+    <!-- Seção de Chamada para Ação -->
+    <section class="bg-gray-100 py-12 shadow-lg">
+        <div class="reveal-scale max-w-screen-xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-sky-600 mb-8">Pronto para Otimizar Sua Gestão Financeira?</h2>
+            <p class="text-lg text-gray-600 mb-8">Entre em contato conosco hoje mesmo para saber mais sobre como
+                podemos ajudar você a melhorar a gestão financeira da sua empresa.</p>
+            <!-- Botão para abrir o modal de Contato -->
+            <a href="#"
+                class="open-bpo-modal bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-md shadow-lg transition duration-300">
+                Solicitar BPO Financeiro
+            </a>
+        </div>
+    </section>
+
+    <!-- Modal para Solicitação de BPO Financeiro -->
+    <div id="bpoModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="text-xl font-bold text-sky-600">Solicitar BPO Financeiro</h3>
+                <button id="closeBpoFinanceiroModal" class="text-gray-500 hover:text-sky-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 mb-4">Preencha o formulário abaixo para solicitar nosso serviço de BPO
+                    Financeiro.
+                </p>
+                <form id="bpoForm">
+                    <div class="mb-4">
+                        <label for="bpoName" class="block text-sm font-medium text-gray-700">Nome <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="bpoName" name="name" placeholder="Seu Nome Completo"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="bpoPhone" class="block text-sm font-medium text-gray-700">Celular <span
+                                class="text-red-500">*</span></label>
+                        <div class="full-width-input">
+                            <input type="tel" id="bpoPhone" name="phone" placeholder="Seu Celular"
+                                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="bpoEmail" class="block text-sm font-medium text-gray-700">Email <span
+                                class="text-red-500">*</span></label>
+                        <input type="email" id="bpoEmail" name="email" placeholder="Seu Email"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="bpoCompany" class="block text-sm font-medium text-gray-700">Nome da Empresa</label>
+                        <input type="text" id="bpoCompany" name="company" placeholder="Nome da sua empresa"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="bpoAtividade" class="block text-sm font-medium text-gray-700">Atividade da
+                            Empresa</label>
+                        <textarea id="bpoAtividade" name="atividade" placeholder="Atividade da Empresa"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            rows="2"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <input type="checkbox" id="bpoComunicacoes" name="comunicacoes" class="mr-2" required>
+                        <label for="bpoComunicacoes" class="text-gray-700 text-sm">Eu concordo em receber
+                            comunicações.</label>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-20 rounded-md shadow-lg transition duration-300">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de FAQ -->
+    <section class="bg-white py-12">
+        <div class="reveal max-w-screen-xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-sky-600 mb-8">Perguntas Frequentes</h2>
+            <div class="space-y-8">
+                <!-- Pergunta 1 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">O que é
+                        BPO Financeiro?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">BPO Financeiro é a terceirização das funções financeiras
+                        da sua empresa para um fornecedor especializado, garantindo maior eficiência e controle
+                        financeiro.</p>
+                </div>
+                <!-- Pergunta 2 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Quais
+                        serviços estão incluídos no BPO Financeiro?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">Nosso BPO Financeiro inclui contabilidade, contas a
+                        pagar e receber, fluxo de caixa, gestão de despesas e relatórios financeiros.</p>
+                </div>
+                <!-- Pergunta 3 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Como o
+                        BPO Financeiro pode beneficiar minha empresa?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">O BPO Financeiro pode aumentar a eficiência operacional,
+                        reduzir custos, melhorar a precisão financeira e permitir que você foque nas atividades
+                        principais da sua empresa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Mapa -->
+    <section class="reveal-scale mx-auto px-4">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1827.7232048245787!2d-46.68370579490532!3d-23.624178901729515!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc9cf75894e2b3e84!2sAob%20Contabilidade!5e0!3m2!1spt-PT!2sbr!4v1658250647492!5m2!1spt-PT!2sbr"
+            width="100%" height="495" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Navbar -->
+    <footer id="navbarfooter" class="fixed bottom-0 w-full bg-white border-t border-gray-200 py-4 px-4 hidden z-20">
+        <nav
+            class="container mx-auto flex flex-col sm:flex-row justify-center sm:justify-center items-center text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center mb-4 sm:mb-0 sm:mr-4">
+                <p class="text-black mb-2 sm:mb-0 sm:mr-3"><span class="font-semibold">Dúvidas?</span></p>
+                <!-- Botão para abrir o modal de Contato -->
+                <a href="#"
+                    class="open-contact-modal bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-md shadow-lg transition duration-300">
+                    Entre em contato
+                </a>
+            </div>
+            <div class="hidden lg:flex flex-col sm:flex-row items-center">
+                <p class="text-black mb-2 sm:mb-0 sm:mr-3">Ou se preferir</p>
+                <!-- Botão para abrir o modal de Ligamos para Você -->
+                <a href="#"
+                    class="open-call-modal bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-md shadow-lg transition duration-300">
+                    Ligamos para você
+                </a>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Modal de Contato -->
+    <div id="contactModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="text-xl font-bold text-sky-600">Entre em Contato</h3>
+                <button id="closeContactModal" class="text-gray-500 hover:text-sky-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 mb-4">Preencha o formulário e você será encaminhado para nosso WhatsApp.</p>
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label for="contactName" class="block text-sm font-medium text-gray-700">Nome <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="contactName" name="name" placeholder="Seu Nome Completo"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="contactPhone" class="block text-sm font-medium text-gray-700">Celular <span
+                                class="text-red-500">*</span></label>
+                        <div class="full-width-input">
+
+                            <input type="tel" id="contactPhone" name="phone" placeholder="Seu Celular"
+                                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="contactEmail" class="block text-sm font-medium text-gray-700">Email <span
+                                class="text-red-500">*</span></label>
+                        <input type="email" id="contactEmail" name="email" placeholder="Seu Email"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="checkbox" id="contactComunicacoes" name="comunicacoes" class="mr-2" required>
+                        <label for="contactComunicacoes" class="text-gray-700 text-sm">Eu concordo em receber
+                            comunicações.</label>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-20 rounded-md shadow-lg transition duration-300">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Ligamos para Você -->
+    <div id="callModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="text-xl font-bold text-sky-600">Ligamos para Você</h3>
+                <button id="closeCallModal" class="text-gray-500 hover:text-sky-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 mb-4">Preencha os seus dados e aguarde o contato da nossa consultora
+                    pelo WhatsApp.</p>
+                <form id="callForm">
+                    <div class="mb-4">
+                        <label for="callName" class="block text-sm font-medium text-gray-700">Nome <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="callName" name="name" placeholder="Seu Nome Completo"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="callPhone" class="block text-sm font-medium text-gray-700">Celular <span
+                                class="text-red-500">*</span></label>
+                        <div class="full-width-input">
+                            <input type="tel" id="callPhone" name="phone" placeholder="Seu Celular"
+                                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="callEmail" class="block text-sm font-medium text-gray-700">Email <span
+                                class="text-red-500">*</span></label>
+                        <input type="email" id="callEmail" name="email" placeholder="Seu Email"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="checkbox" id="callComunicacoes" name="comunicacoes" class="mr-2" required>
+                        <label for="callComunicacoes" class="text-gray-700 text-sm">Eu concordo em receber
+                            comunicações.</label>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-20 rounded-md shadow-lg transition duration-300">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer"
+        class="relative sm:mb-12 mb-24 text-sky-600 py-8 bg-gradient-to-b from-white via-gray-100 to-gray-200">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div
+                class="reveal relative container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-start md:items-start gap-10 px-4 z-10">
+                <div>
+                    <a href="#" class="text-2xl font-bold">
+                        <img src="../images/logobg.png" alt="Logo da AOB Contábil"
+                            class="w-64 md:-mt-4 md:-ml-6 mx-auto">
+                    </a>
+                    <h3 class="text-xl font-semibold mt-2 mb-2 text-sky-600">AOB Contabilidade</h3>
+                    <p class="mb-2 text-black">CNPJ: 25.344.574/0001-08</p>
+                    <p class="mb-2 text-black">Marca registrada | Processo nº: 910926310/2018</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Contato</h4>
+                    <p class="text-black">Rua Barão do Triunfo - 427 - Conjunto 1301, Brooklin,<br> São Paulo - SP,
+                        04602-001</p>
+                    <p class="text-black">(11) 2339-4043<i class="fab fa-whatsapp text-lg ml-1 text-green-600"></i></p>
+                    <p class="text-black">contato@aobcontabil.com.br</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600 mt-0 lg:mt-0">Links Rápidos</h4>
+                    <ul class="text-black">
+                        <li class="mb-2 hover:text-sky-600"><a href="/#home">Início</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#services">Serviços</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#sobre">Sobre</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Redes Sociais</h4>
+                    <ul class="text-black">
+                        <li>
+                            <a href="https://www.instagram.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram text-2xl mr-2 text-red-900"></i>Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook text-2xl mr-2 text-blue-900"></i>Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com.br/@aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube text-2xl -ml-0 mr-2 text-red-500"></i>Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/company/aob-contabilidade"
+                                class="flex mb-2 hover:text-sky-600" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin text-2xl mr-2 text-gray-900"></i>LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.x.com/aobcontabil" class="flex mb-2 hover:text-sky-600" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fab fa-x-twitter text-2xl -ml-0 mr-2 text-black"></i>Twitter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FontAwesome para os ícones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("d8ZO2TKpYA3JYEHHP");
+        })();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOB Contábil - Calculadora Simples Nacional</title>
+    <!-- Importação de Estilos e Scripts Externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="../js/scrollreveal.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.inputmask.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+    <style>
+        .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: stretch;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-white via-gray-100 to-gray-200">
+    <!-- Navbar Fixa e Transparente -->
+    <header class="fixed top-0 w-full z-50 bg-white navbar">
+        <!-- Navbar -->
+        <nav class="max-w-screen-xl container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center">
+                <a href="/teste#home" class="text-2xl font-bold text-black">
+                    <img src="../images/logobg.png" alt="AOB Contábil" class="h-16">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 relative">
+                <a href="/teste#home" class="text-gray-900 hover:text-sky-600 font-semibold">Início</a>
+                <div class="relative group">
+                    <button id="services-button"
+                        class="text-gray-900 hover:text-sky-600 font-semibold flex items-center">
+                        Serviços
+                        <svg id="dropdown-icon-services" class="ml-2 w-4 h-4 transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="services-dropdown" class="absolute hidden bg-white shadow-lg mt-0 rounded-md py-2"
+                        style="min-width: 200px;">
+                        <a href="/teste/abertura-de-empresa/"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Abertura de
+                            Empresa</a>
+                        <a href="/teste/bpo-financeiro/"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">BPO
+                            Financeiro</a>
+                        <div class="relative group">
+                            <button id="consultoria-button"
+                                class="block w-full px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100 flex items-center">
+                                Consultoria
+                                <svg id="dropdown-icon-consultoria"
+                                    class="ml-2 w-4 h-4 transition-transform duration-300" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="consultoria-dropdown"
+                                class="absolute hidden bg-white shadow-lg mt-0 rounded-md py-2"
+                                style="min-width: 200px; left: 100%; top: 0;">
+                                <a href="/teste/consultoria/consultoria-tributaria.html"
+                                    class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                    Tributária</a>
+                                <a href="/teste/consultoria/consultoria-contabil.html"
+                                    class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                    Contábil</a>
+                                <a href="/teste/consultoria/consultoria-dp.html"
+                                    class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                    Departamento
+                                    Pessoal</a>
+                            </div>
+                        </div>
+
+                        <a href="/teste/contabilidade"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Contabilidade
+                            Completa</a>
+
+                        <a href="/teste/trocar-contador/"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Trocar de
+                            Contador</a>
+                    </div>
+                </div>
+                <a href="/teste/#sobre" class="text-gray-900 hover:text-sky-600 font-semibold">Sobre</a>
+                <div class="relative group">
+                    <button id="blog-button" class="text-gray-900 hover:text-sky-600 font-semibold flex items-center">
+                        Ferramentas
+                        <svg id="dropdown-icon-blog" class="ml-2 w-4 h-4 transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="blog-dropdown" class="absolute hidden bg-white shadow-lg mt-0 rounded-md py-2"
+                        style="min-width: 200px;">
+                        <a href="/teste/ferramentas/calculadora-hora-extra.html"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora
+                            de
+                            Hora Extra</a>
+                        <a href="/teste/ferramentas/calculadora-simples-nacional.html"
+                            class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora do
+                            Simples Nacional</a>
+                    </div>
+                </div>
+                <a href="/teste/#contato" class="text-gray-900 hover:text-sky-600 font-semibold">Contato</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="https://onvio.com.br/br-portal-do-cliente/" target="_blank"
+                    class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-md shadow-lg transition duration-300 mr-4">
+                    Portal do Cliente
+                </a>
+            </div>
+            <button class="block md:hidden focus:outline-none" id="menu-button">
+                <svg class="w-6 h-6 text-black hover:text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Navbar Mobile -->
+        <div class="hidden md:hidden bg-white bg-opacity-75" id="menu">
+            <a href="/teste/#home" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Início</a>
+            <div class="relative">
+                <button id="mobile-services-button"
+                    class="block text-gray-900 hover:text-sky-600 px-4 py-2 w-full text-left flex items-center justify-between">
+                    Serviços
+                    <svg id="mobile-services-icon" class="ml-2 w-4 h-4" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobile-services-dropdown" class="hidden bg-white shadow-lg mt-0 rounded-md py-2 w-full">
+                    <a href="/teste/abertura-de-empresa/"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Abertura de
+                        Empresa</a>
+                    <a href="/teste/bpo-financeiro/"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">BPO
+                        Financeiro</a>
+                    <div class="relative group">
+                        <button id="mobile-consultoria-button"
+                            class="block text-gray-900 hover:text-sky-600 px-4 py-2 w-full text-left flex items-center justify-between">
+                            Consultoria
+                            <svg id="mobile-consultoria-icon" class="ml-2 w-4 h-4 transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+                        <div id="mobile-consultoria-dropdown"
+                            class="hidden bg-white shadow-lg mt-0 rounded-md py-2 w-full">
+                            <a href="/teste/consultoria/consultoria-tributaria.html"
+                                class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                Tributária</a>
+                            <a href="/teste/consultoria/consultoria-contabil.html"
+                                class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                Contábil</a>
+                            <a href="/teste/consultoria/consultoria-dp.html"
+                                class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Consultoria
+                                Departamento Pessoal</a>
+                        </div>
+                    </div>
+                    <a href="/teste/contabilidade"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Contabilidade
+                        Completa</a>
+
+                    <a href="/teste/trocar-contador/"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Trocar de
+                        Contador</a>
+                </div>
+            </div>
+            <a href="/teste/#sobre" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Sobre</a>
+            <div class="relative">
+                <button id="mobile-blog-button"
+                    class="block text-gray-900 hover:text-sky-600 px-4 py-2 w-full text-left flex items-center justify-between">
+                    Ferramentas
+                    <svg id="mobile-blog-icon" class="ml-2 w-4 h-4" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="mobile-blog-dropdown" class="hidden bg-white shadow-lg mt-0 rounded-md py-2 w-full">
+                    <a href="/teste/ferramentas/calculadora-hora-extra.html"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora de Hora
+                        Extra</a>
+                    <a href="/teste/ferramentas/calculadora-simples-nacional.html"
+                        class="block px-4 py-2 text-gray-900 hover:text-sky-600 hover:bg-gray-100">Calculadora do
+                        Simples Nacional</a>
+                </div>
+            </div>
+            <a href="/teste/#contato" class="block text-gray-900 hover:text-sky-600 px-4 py-2">Contato</a>
+            <a href="https://onvio.com.br/br-portal-do-cliente/" target="_blank"
+                class="block bg-sky-600 text-white text-center px-4 py-2 rounded-md shadow hover:bg-sky-700">Portal do
+                Cliente</a>
+        </div>
+
+    </header>
+
+    <!-- Main Content -->
+    <section class="max-w-screen-xl container mx-auto px-6 py-8 pt-28">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold mb-6 text-sky-600">Calculadora do Simples Nacional</h1>
+            <p class="text-gray-600 mb-6">Calcule a alíquota com base na receita bruta anual.</p>
+
+            <!-- Formulário de entrada -->
+            <form id="calculator-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="atividade" class="block text-gray-700 font-bold mb-2">Atividade:</label>
+                    <select id="atividade" class="w-full p-2 border border-gray-300 rounded mt-2" required>
+                        <option value="">Selecione a atividade</option>
+                        <option value="1">Comércio</option>
+                        <option value="2">Indústria</option>
+                        <option value="3">Serviços</option>
+                        <option value="4">Construção Civil</option>
+                        <option value="5">Profissões Regulamentadas</option>
+                    </select>
+                    <p class="text-sm text-gray-600 mt-2">Selecione a atividade principal da empresa.</p>
+                </div>
+                <div>
+                    <label for="faturamento12Meses" class="block text-gray-700 font-bold mb-2">Faturamento dos Últimos
+                        12
+                        Meses:</label>
+                    <input type="number" id="faturamento12Meses" class="w-full p-2 border border-gray-300 rounded mt-2"
+                        placeholder="R$" required>
+                    <p class="text-sm text-gray-600 mt-2">Informe o faturamento dos últimos 12 meses.</p>
+                </div>
+                <div class="col-span-1 md:col-span-2">
+                    <button type="button" onclick="calcularSimplesNacional()"
+                        class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-md shadow-lg transition duration-300">
+                        Calcular
+                    </button>
+                </div>
+            </form>
+
+            <!-- Resultados -->
+            <div id="resultado" class="mt-6 p-4 bg-gray-100 rounded shadow hidden">
+                <h2 class="text-2xl font-bold mb-4 text-sky-600">Resultado</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded shadow">
+                        <p class="text-gray-700 font-bold">Atividade:</p>
+                        <p id="resultadoAtividade" class="text-gray-900"></p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <p class="text-gray-700 font-bold">Faturamento dos Últimos 12 Meses:</p>
+                        <p id="resultadoFaturamento12Meses" class="text-gray-900"></p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <p class="text-gray-700 font-bold">Alíquota Nominal:</p>
+                        <p id="resultadoAliquotaNominal" class="text-gray-900"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const aliquotas = {
+            1: [0.04, 0.073, 0.095, 0.107, 0.143, 0.19],
+            2: [0.045, 0.078, 0.1, 0.112, 0.147, 0.3],
+            3: [0.06, 0.112, 0.135, 0.16, 0.21, 0.33],
+            4: [0.045, 0.09, 0.102, 0.14, 0.22, 0.33],
+            5: [0.155, 0.18, 0.195, 0.205, 0.23, 0.305]
+        };
+
+        const faixas = [
+            180000,
+            360000,
+            720000,
+            1800000,
+            3600000,
+            4800000
+        ];
+
+        function calcularSimplesNacional() {
+            const atividade = parseInt(document.getElementById('atividade').value);
+            const faturamento12Meses = parseFloat(document.getElementById('faturamento12Meses').value);
+
+            if (isNaN(atividade) || isNaN(faturamento12Meses)) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                return;
+            }
+
+            // Encontra a faixa correspondente para a atividade
+            let aliquotaNominal = 0;
+            for (let i = 0; i < faixas.length; i++) {
+                if (faturamento12Meses <= faixas[i]) {
+                    aliquotaNominal = aliquotas[atividade][i];
+                    break;
+                }
+            }
+
+            // Exibe os resultados
+            document.getElementById('resultadoAtividade').innerText = getAtividadeText(atividade);
+            document.getElementById('resultadoFaturamento12Meses').innerText = `R$ ${faturamento12Meses.toFixed(2)}`;
+            document.getElementById('resultadoAliquotaNominal').innerText = `${(aliquotaNominal * 100).toFixed(2)}%`;
+
+            document.getElementById('resultado').classList.remove('hidden');
+        }
+
+        function getAtividadeText(atividade) {
+            switch (atividade) {
+                case 1: return 'Comércio';
+                case 2: return 'Indústria';
+                case 3: return 'Serviços';
+                case 4: return 'Construção Civil';
+                case 5: return 'Profissões Regulamentadas';
+                default: return '';
+            }
+        }
+    </script>
+
+    <!-- Article Section -->
+    <section class="max-w-screen-xl container mx-auto px-6 py-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold mb-6 text-sky-600">Tabela Completa do Simples Nacional</h1>
+            <p class="text-gray-600 mb-6">
+                O Simples Nacional é um regime tributário diferenciado, simplificado e favorecido previsto na Lei
+                Complementar nº 123, de 14 de dezembro de 2006, aplicável às Microempresas (ME) e às Empresas de
+                Pequeno Porte (EPP). Confira abaixo as tabelas de alíquotas por anexo e faixas de receita bruta anual.
+            </p>
+            <h2 class="text-3xl font-bold mb-4 text-sky-600">Anexo I - Comércio</h2>
+            <p class="text-gray-600 mb-4">Alíquotas do Simples Nacional para empresas do comércio:</p>
+            <table class="w-full mb-6">
+                <thead>
+                    <tr>
+                        <th class="border px-4 py-2">Faixa de Receita Bruta Anual</th>
+                        <th class="border px-4 py-2">Alíquota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Até R$ 180.000,00</td>
+                        <td class="border px-4 py-2">4%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 180.000,01 a R$ 360.000,00</td>
+                        <td class="border px-4 py-2">7.3%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 360.000,01 a R$ 720.000,00</td>
+                        <td class="border px-4 py-2">9.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 720.000,01 a R$ 1.800.000,00</td>
+                        <td class="border px-4 py-2">10.7%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 1.800.000,01 a R$ 3.600.000,00</td>
+                        <td class="border px-4 py-2">14.3%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 3.600.000,01 a R$ 4.800.000,00</td>
+                        <td class="border px-4 py-2">19%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="text-3xl font-bold mb-4 text-sky-600">Anexo II - Indústria</h2>
+            <p class="text-gray-600 mb-4">Alíquotas do Simples Nacional para empresas da indústria:</p>
+            <table class="w-full mb-6">
+                <thead>
+                    <tr>
+                        <th class="border px-4 py-2">Faixa de Receita Bruta Anual</th>
+                        <th class="border px-4 py-2">Alíquota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Até R$ 180.000,00</td>
+                        <td class="border px-4 py-2">4.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 180.000,01 a R$ 360.000,00</td>
+                        <td class="border px-4 py-2">7.8%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 360.000,01 a R$ 720.000,00</td>
+                        <td class="border px-4 py-2">10%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 720.000,01 a R$ 1.800.000,00</td>
+                        <td class="border px-4 py-2">11.2%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 1.800.000,01 a R$ 3.600.000,00</td>
+                        <td class="border px-4 py-2">14.7%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 3.600.000,01 a R$ 4.800.000,00</td>
+                        <td class="border px-4 py-2">30%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="text-3xl font-bold mb-4 text-sky-600">Anexo III - Serviços</h2>
+            <p class="text-gray-600 mb-4">Alíquotas do Simples Nacional para empresas de serviços:</p>
+            <table class="w-full mb-6">
+                <thead>
+                    <tr>
+                        <th class="border px-4 py-2">Faixa de Receita Bruta Anual</th>
+                        <th class="border px-4 py-2">Alíquota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Até R$ 180.000,00</td>
+                        <td class="border px-4 py-2">6%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 180.000,01 a R$ 360.000,00</td>
+                        <td class="border px-4 py-2">11.2%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 360.000,01 a R$ 720.000,00</td>
+                        <td class="border px-4 py-2">13.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 720.000,01 a R$ 1.800.000,00</td>
+                        <td class="border px-4 py-2">16%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 1.800.000,01 a R$ 3.600.000,00</td>
+                        <td class="border px-4 py-2">21%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 3.600.000,01 a R$ 4.800.000,00</td>
+                        <td class="border px-4 py-2">33%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="text-3xl font-bold mb-4 text-sky-600">Anexo IV - Construção Civil</h2>
+            <p class="text-gray-600 mb-4">Alíquotas do Simples Nacional para empresas de construção civil:</p>
+            <table class="w-full mb-6">
+                <thead>
+                    <tr>
+                        <th class="border px-4 py-2">Faixa de Receita Bruta Anual</th>
+                        <th class="border px-4 py-2">Alíquota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Até R$ 180.000,00</td>
+                        <td class="border px-4 py-2">4.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 180.000,01 a R$ 360.000,00</td>
+                        <td class="border px-4 py-2">9%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 360.000,01 a R$ 720.000,00</td>
+                        <td class="border px-4 py-2">10.2%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 720.000,01 a R$ 1.800.000,00</td>
+                        <td class="border px-4 py-2">14%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 1.800.000,01 a R$ 3.600.000,00</td>
+                        <td class="border px-4 py-2">22%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 3.600.000,01 a R$ 4.800.000,00</td>
+                        <td class="border px-4 py-2">33%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="text-3xl font-bold mb-4 text-sky-600">Anexo V - Serviço de Profissões Regulamentadas</h2>
+            <p class="text-gray-600 mb-4">Alíquotas do Simples Nacional para empresas de serviços regulamentados:</p>
+            <table class="w-full mb-6">
+                <thead>
+                    <tr>
+                        <th class="border px-4 py-2">Faixa de Receita Bruta Anual</th>
+                        <th class="border px-4 py-2">Alíquota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Até R$ 180.000,00</td>
+                        <td class="border px-4 py-2">15.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 180.000,01 a R$ 360.000,00</td>
+                        <td class="border px-4 py-2">18%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 360.000,01 a R$ 720.000,00</td>
+                        <td class="border px-4 py-2">19.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 720.000,01 a R$ 1.800.000,00</td>
+                        <td class="border px-4 py-2">20.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 1.800.000,01 a R$ 3.600.000,00</td>
+                        <td class="border px-4 py-2">23%</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">De R$ 3.600.000,01 a R$ 4.800.000,00</td>
+                        <td class="border px-4 py-2">30.5%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Seção de FAQ -->
+    <section class="bg-gray-100 py-12">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-sky-600 mb-8">Perguntas Frequentes</h2>
+            <div class="space-y-8">
+                <!-- Pergunta 1 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">O que é o
+                        Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">O Simples Nacional é um regime tributário simplificado
+                        para
+                        micro e pequenas empresas, que unifica o pagamento de diversos impostos em uma única guia.</p>
+                </div>
+                <!-- Pergunta 2 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Como
+                        calcular
+                        a alíquota do Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">A alíquota do Simples Nacional é calculada com base na
+                        receita bruta anual da empresa e no anexo ao qual ela pertence. Nossa calculadora faz esse
+                        cálculo
+                        automaticamente.</p>
+                </div>
+                <!-- Pergunta 3 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Quais são
+                        os
+                        anexos do Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">Os anexos do Simples Nacional são tabelas que
+                        classificam as
+                        atividades econômicas das empresas, cada uma com alíquotas específicas. São eles: Anexo I, Anexo
+                        II,
+                        Anexo III, Anexo IV e Anexo V.</p>
+                </div>
+                <!-- Pergunta 4 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Quais
+                        empresas podem optar pelo Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">Podem optar pelo Simples Nacional microempresas (ME) e
+                        empresas de pequeno porte (EPP) que atendam aos critérios estabelecidos pela legislação, como
+                        limite
+                        de receita bruta anual e atividades permitidas.</p>
+                </div>
+                <!-- Pergunta 5 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Se a
+                        minha
+                        empresa possuir mais de um CNAE, como saberei a alíquota a aplicar?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">Quando uma empresa possui mais de um CNAE, deve-se
+                        identificar a atividade principal e as secundárias. A alíquota aplicada será a correspondente à
+                        atividade de maior receita.</p>
+                </div>
+                <!-- Pergunta 6 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Como
+                        saber
+                        qual tabela do Simples Nacional usar?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">A tabela do Simples Nacional a ser usada depende da
+                        atividade econômica da empresa. Cada anexo do Simples Nacional abrange diferentes tipos de
+                        atividades e possui alíquotas específicas.</p>
+                </div>
+                <!-- Pergunta 7 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Qual o
+                        limite
+                        de receita bruta anual para optar pelo Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">O limite de receita bruta anual para uma empresa optar
+                        pelo
+                        Simples Nacional é de R$ 4.800.000,00.</p>
+                </div>
+                <!-- Pergunta 8 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Quais são
+                        os
+                        benefícios do Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">Os benefícios do Simples Nacional incluem simplificação
+                        no
+                        pagamento de impostos, redução da carga tributária, menor burocracia e facilidade na gestão
+                        contábil
+                        e fiscal da empresa.</p>
+                </div>
+                <!-- Pergunta 9 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">Como
+                        posso
+                        saber se minha empresa está enquadrada corretamente no Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">Para saber se sua empresa está enquadrada corretamente
+                        no
+                        Simples Nacional, é recomendável consultar um contador ou utilizar ferramentas de simulação
+                        oferecidas por escritórios de contabilidade.</p>
+                </div>
+                <!-- Pergunta 10 -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 question cursor-pointer hover:text-sky-600">O que
+                        fazer
+                        se minha empresa ultrapassar o limite de receita bruta do Simples Nacional?</h3>
+                    <p class="text-gray-600 mt-2 answer hidden">Se sua empresa ultrapassar o limite de receita bruta do
+                        Simples Nacional, deverá solicitar o desenquadramento e escolher outro regime tributário mais
+                        adequado, como o Lucro Presumido ou Lucro Real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Mapa -->
+    <section class="reveal-scale mx-auto px-4">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1827.7232048245787!2d-46.68370579490532!3d-23.624178901729515!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc9cf75894e2b3e84!2sAob%20Contabilidade!5e0!3m2!1spt-PT!2sbr!4v1658250647492!5m2!1spt-PT!2sbr"
+            width="100%" height="495" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Navbar -->
+    <footer id="navbarfooter" class="fixed bottom-0 w-full bg-white border-t border-gray-200 py-4 px-4 hidden z-20">
+        <nav
+            class="container mx-auto flex flex-col sm:flex-row justify-center sm:justify-center items-center text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center mb-4 sm:mb-0 sm:mr-4">
+                <p class="text-black mb-2 sm:mb-0 sm:mr-3"><span class="font-semibold">Dúvidas?</span></p>
+                <!-- Botão para abrir o modal de Contato -->
+                <a href="#"
+                    class="open-contact-modal bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-md shadow-lg transition duration-300">
+                    Entre em contato
+                </a>
+            </div>
+            <div class="hidden lg:flex flex-col sm:flex-row items-center">
+                <p class="text-black mb-2 sm:mb-0 sm:mr-3">Ou se preferir</p>
+                <!-- Botão para abrir o modal de Ligamos para Você -->
+                <a href="#"
+                    class="open-call-modal bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-md shadow-lg transition duration-300">
+                    Ligamos para você
+                </a>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Modal de Contato -->
+    <div id="contactModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="text-xl font-bold text-sky-600">Entre em Contato</h3>
+                <button id="closeContactModal" class="text-gray-500 hover:text-sky-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 mb-4">Preencha o formulário e você será encaminhado para nosso WhatsApp.</p>
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label for="contactName" class="block text-sm font-medium text-gray-700">Nome <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="contactName" name="name" placeholder="Seu Nome Completo"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="contactPhone" class="block text-sm font-medium text-gray-700">Celular <span
+                                class="text-red-500">*</span></label>
+                        <div class="full-width-input">
+
+                            <input type="tel" id="contactPhone" name="phone" placeholder="Seu Celular"
+                                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="contactEmail" class="block text-sm font-medium text-gray-700">Email <span
+                                class="text-red-500">*</span></label>
+                        <input type="email" id="contactEmail" name="email" placeholder="Seu Email"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="checkbox" id="contactComunicacoes" name="comunicacoes" class="mr-2" required>
+                        <label for="contactComunicacoes" class="text-gray-700 text-sm">Eu concordo em receber
+                            comunicações.</label>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-md shadow-lg transition duration-300">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Ligamos para Você -->
+    <div id="callModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="text-xl font-bold text-sky-600">Ligamos para Você</h3>
+                <button id="closeCallModal" class="text-gray-500 hover:text-sky-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 mb-4">Preencha os seus dados e aguarde o contato da nossa consultora
+                    pelo WhatsApp.</p>
+                <form id="callForm">
+                    <div class="mb-4">
+                        <label for="callName" class="block text-sm font-medium text-gray-700">Nome <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="callName" name="name" placeholder="Seu Nome Completo"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="callPhone" class="block text-sm font-medium text-gray-700">Celular <span
+                                class="text-red-500">*</span></label>
+                        <div class="full-width-input">
+                            <input type="tel" id="callPhone" name="phone" placeholder="Seu Celular"
+                                class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="callEmail" class="block text-sm font-medium text-gray-700">Email <span
+                                class="text-red-500">*</span></label>
+                        <input type="email" id="callEmail" name="email" placeholder="Seu Email"
+                            class="mt-1 p-2 border border-gray-300 rounded-md shadow-sm w-full focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="checkbox" id="callComunicacoes" name="comunicacoes" class="mr-2" required>
+                        <label for="callComunicacoes" class="text-gray-700 text-sm">Eu concordo em receber
+                            comunicações.</label>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-md shadow-lg transition duration-300">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer"
+        class="relative sm:mb-12 mb-24 text-sky-600 py-8 bg-gradient-to-b from-white via-gray-100 to-gray-200">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div
+                class="reveal relative container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-start md:items-start gap-10 px-4 z-10">
+                <div>
+                    <a href="#" class="text-2xl font-bold">
+                        <img src="../images/logobg.png" alt="Logo da AOB Contábil"
+                            class="w-64 md:-mt-4 md:-ml-6 mx-auto">
+                    </a>
+                    <h3 class="text-xl font-semibold mt-2 mb-2 text-sky-600">AOB Contabilidade</h3>
+                    <p class="mb-2 text-black">CNPJ: 25.344.574/0001-08</p>
+                    <p class="mb-2 text-black">Marca registrada | Processo nº: 910926310/2018</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Contato</h4>
+                    <p class="text-black">Rua Barão do Triunfo - 427 - Conjunto 1301, Brooklin,<br> São Paulo - SP,
+                        04602-001</p>
+                    <p class="text-black">(11) 2339-4043<i class="fab fa-whatsapp text-lg ml-1 text-green-600"></i></p>
+                    <p class="text-black">contato@aobcontabil.com.br</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600 mt-0 lg:mt-0">Links Rápidos</h4>
+                    <ul class="text-black">
+                        <li class="mb-2 hover:text-sky-600"><a href="/#home">Início</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#services">Serviços</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#sobre">Sobre</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Redes Sociais</h4>
+                    <ul class="text-black">
+                        <li>
+                            <a href="https://www.instagram.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram text-2xl mr-2 text-red-900"></i>Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook text-2xl mr-2 text-blue-900"></i>Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com.br/@aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube text-2xl -ml-0 mr-2 text-red-500"></i>Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/company/aob-contabilidade"
+                                class="flex mb-2 hover:text-sky-600" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin text-2xl mr-2 text-gray-900"></i>LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.x.com.br/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-x-twitter text-2xl -ml-0 mr-2 text-black"></i>Twitter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FontAwesome para os ícones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("d8ZO2TKpYA3JYEHHP");
+        })();
+    </script>
+</body>
+
+</html>

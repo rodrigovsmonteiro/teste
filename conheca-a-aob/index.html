@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOB Contábil - A contabilidade que impulsiona o seu crescimento</title>
+    <meta name="description"
+        content="A AOB Contábil oferece serviços de contabilidade para empresas do Simples Nacional e outros regimes tributários. Conheça nossos serviços e agende uma consulta.">
+    <meta name="keywords"
+        content="contabilidade, Simples Nacional, contabilidade empresarial, consultoria contábil, serviços contábeis, Lucro Presumido, Lucro Real">
+    <meta name="author" content="AOB Contábil">
+    <meta property="og:title" content="AOB Contábil - A contabilidade que impulsiona o seu crescimento">
+    <meta property="og:description"
+        content="A AOB Contábil oferece serviços de contabilidade para empresas do Simples Nacional e outros regimes tributários. Conheça nossos serviços e agende uma consulta.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aobcontabil.com.br/conheca-a-aob">
+    <meta property="og:image" content="https://aobcontabil.com.br/favicon-32x32.png">
+    <meta property="og:site_name" content="AOB Contábil">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
+    <style>
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid transparent;
+            border-top: 4px solid #0369A1;
+            /* Cor do spinner */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Adicionando animação para o modal */
+        .modal-content {
+            transform: scale(0.9);
+            transition: transform 0.3s ease-out;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body class="">
+    <!-- Seção Principal -->
+    <div id="home"
+        class="h-fit sm:h-fit md:h-fit lg:h-fit xl:h-screen bg-gradient-to-b from-white via-gray-100 to-gray-200 ">
+        <section class="min-h-screen flex items-center justify-center shadow-lg rounded-lg p-6">
+            <!-- Contêiner Principal -->
+            <div id="formulario" class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
+                <!-- Logo -->
+                <div class="flex justify-center mb-4">
+                    <img src="../images/logobg.png" alt="Logo da AOB Contábil" class="w-64 object-contain">
+                </div>
+
+                <!-- Título -->
+                <h1 class="text-3xl font-bold text-center text-sky-600 mb-6">
+                    A contabilidade que impulsiona o seu crescimento
+                </h1>
+
+                <!-- Descrição Curta -->
+                <p class="text-center text-gray-900 mb-6">Por favor, preencha os seus dados e aguarde o contato da nossa
+                    consultora pelo WhatsApp.</p>
+
+                <!-- Formulário -->
+                <form name="Primeira Pagina de Captura" id="Primeira Pagina de Captura" class="space-y-4"
+                    onsubmit="validateForm(event)">
+                    <div>
+                        <label for="firstname" class="block text-gray-700">Nome*</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Nome *"
+                            class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-gray-700">WhatsApp*</label>
+                        <input type="tel" id="phone" name="phone" placeholder="WhatsApp *"
+                            class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700">Email*</label>
+                        <input type="email" id="email" name="email" placeholder="Email *"
+                            class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div>
+                        <label for="company" class="block text-gray-700">Empresa*</label>
+                        <input type="text" id="company" name="company" placeholder="Nome da sua empresa *"
+                            class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-sky-500"
+                            required>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="comunicacoes" name="comunicacoes" class="mr-2" required>
+                        <label for="comunicacoes" class="text-gray-700 text-sm">Eu concordo em receber
+                            comunicações.</label>
+                    </div>
+                    <div class="text-center">
+                        <!-- Botão para abrir o modal -->
+                        <button type="submit"
+                            class="bg-sky-600 text-white py-3 px-8 rounded-full hover:bg-sky-700 transition-colors shadow-lg">
+                            Quero saber mais!
+                        </button>
+                    </div>
+                </form>
+                <p class="text-gray-500 text-sm mt-2 text-center">Pode ficar tranquilo.<br> Seus dados estão protegidos
+                    conosco!
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Seção de Serviços -->
+    <section id="servicos" class="w-full min-h-screen flex items-center justify-center bg-white p-6">
+        <div class="max-w-4xl">
+            <div class="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Serviços -->
+                <div class="bg-white rounded-lg p-6 flex flex-col gap-4 shadow-lg h-full">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-800 mb-4">
+                        <!-- Ícone SVG -->
+                        <i class="fas fa-cogs mr-2 text-gray-600"></i>
+                        <!-- Texto com sublinhado -->
+                        <span class="decoration-gray-800 text-sky-600">O que fazemos:</span>
+                    </h2>
+                    <p class="text-gray-900">Consultoria e Planejamento Tributário</p>
+                    <p class="text-gray-900">Rotinas trabalhistas, como admissões, rescisões, folha de pagamento e
+                        outras atividades</p>
+                    <p class="text-gray-900">Elaboração de balanços e balancetes periódicos</p>
+                    <p class="text-gray-900">Relatórios gerenciais</p>
+                    <p class="text-gray-900">Levantamento e manutenção de controle patrimonial</p>
+                    <p class="text-gray-900">Abertura, alterações e encerramento de empresas</p>
+                </div>
+
+                <!-- Benefícios -->
+                <div class="bg-white rounded-lg p-6 flex flex-col gap-4 shadow-lg h-full">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-800 mb-4">
+                        <!-- Ícone SVG -->
+                        <i class="fas fa-chart-line mr-2 text-green-500"></i>
+                        <!-- Texto com sublinhado -->
+                        <span class="decoration-gray-800 text-sky-600">Fazendo isso, você terá:</span>
+                    </h2>
+                    <p class="text-gray-900">Redução de inadimplência</p>
+                    <p class="text-gray-900">Melhoria no planejamento financeiro</p>
+                    <p class="text-gray-900">Redução de riscos fiscais</p>
+                    <p class="text-gray-900">Melhor tomada de decisão</p>
+                    <p class="text-gray-900">Transparência nas operações</p>
+                    <p class="text-gray-900">Prevenção de crises de liquidez</p>
+                    <p class="text-gray-900">Planejamento de investimentos</p>
+                    <p class="text-gray-900">Personalização de soluções</p>
+                </div>
+            </div>
+
+            <!-- Descrição Curta e Botão -->
+            <section>
+                <div class="mt-16">
+                    <h1 class="text-3xl font-bold text-sky-600 text-center mb-4">
+                        Muito mais que uma contabilidade!
+                    </h1>
+                    <p class="text-gray-700 mb-8 mx-4">
+                        A AOB Contábil é a parceira ideal para o sucesso da sua empresa. Nossa metodologia é
+                        personalizada e
+                        projetada para
+                        atender às suas necessidades específicas. Nossa abordagem estratégica e transparente garante que
+                        você tenha a confiança
+                        e o suporte necessários para crescer e prosperar.
+                    </p>
+                    <div class="items-center justify-center text-center">
+                        <button
+                            class="bg-sky-600 text-white py-3 px-8 rounded-full hover:bg-sky-700 transition-colors shadow-lg">
+                            <a href="#formulario">
+                                Quero saber mais!
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <!-- Seção de Mapa -->
+    <section class="reveal-scale mx-auto px-4">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1827.7232048245787!2d-46.68370579490532!3d-23.624178901729515!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc9cf75894e2b3e84!2sAob%20Contabilidade!5e0!3m2!1spt-PT!2sbr!4v1658250647492!5m2!1spt-PT!2sbr"
+            width="100%" height="495" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer"
+        class="relative sm:mb-12 mb-24 text-sky-600 py-8 bg-gradient-to-b from-white via-gray-100 to-gray-200">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div
+                class="reveal relative container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-start md:items-start gap-10 px-4 z-10">
+                <div>
+                    <a href="#" class="text-2xl font-bold">
+                        <img src="../images/logobg.png" alt="Logo da AOB Contábil"
+                            class="w-64 md:-mt-4 md:-ml-6 mx-auto">
+                    </a>
+                    <h3 class="text-xl font-semibold mt-2 mb-2 text-sky-600">AOB Contabilidade</h3>
+                    <p class="mb-2 text-black">CNPJ: 25.344.574/0001-08</p>
+                    <p class="mb-2 text-black">Marca registrada | Processo nº: 910926310/2018</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Contato</h4>
+                    <p class="text-black">Rua Barão do Triunfo - 427 - Conjunto 1301, Brooklin,<br> São Paulo - SP,
+                        04602-001</p>
+                    <p class="text-black">(11) 2339-4043<i class="fab fa-whatsapp text-lg ml-1 text-green-600"></i></p>
+                    <p class="text-black">contato@aobcontabil.com.br</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600 mt-0 lg:mt-0">Links Rápidos</h4>
+                    <ul class="text-black">
+                        <li class="mb-2 hover:text-sky-600"><a href="/#home">Início</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#services">Serviços</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#sobre">Sobre</a></li>
+                        <li class="mb-2 hover:text-sky-600"><a href="/#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-2 text-sky-600">Redes Sociais</h4>
+                    <ul class="text-black">
+                        <li>
+                            <a href="https://www.instagram.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram text-2xl mr-2 text-red-900"></i>Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook text-2xl mr-2 text-blue-900"></i>Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com.br/@aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube text-2xl -ml-0 mr-2 text-red-500"></i>Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/company/aob-contabilidade"
+                                class="flex mb-2 hover:text-sky-600" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin text-2xl mr-2 text-gray-900"></i>LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.x.com.br/aobcontabil" class="flex mb-2 hover:text-sky-600"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-x-twitter text-2xl -ml-0 mr-2 text-black"></i>Twitter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FontAwesome para os ícones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("d8ZO2TKpYA3JYEHHP");
+        })();
+    </script>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg modal-content">
+            <div class="flex justify-center mb-4">
+                <div class="spinner"></div>
+            </div>
+            <h2 class="text-center text-xl font-bold text-sky-700 mb-6">Obrigado!</h2>
+            <p class="text-center text-gray-700">
+                Em instantes, você será direcionado para o WhatsApp da nossa consultora.
+                <br>
+                Envie uma mensagem para ser atendido imediatamente.
+            </p>
+        </div>
+    </div>
+
+    <!-- Script para o Modal -->
+    <script>
+        const modal = document.getElementById('modal');
+
+        function validateForm(event) {
+            event.preventDefault();
+            const nome = document.getElementById('firstname').value;
+            const empresa = document.getElementById('company').value;
+
+            // Constrói a mensagem para WhatsApp
+            const mensagem = `Olá, meu nome é ${nome} da empresa ${empresa} e estou interessado nos serviços da AOB Contábil.`;
+
+            // Codifica a mensagem para a URL
+            const mensagemEncoded = encodeURIComponent(mensagem);
+
+            // Constrói a URL do WhatsApp
+            const whatsappURL = `https://wa.me/551123394043?text=${mensagemEncoded}`;
+
+            // Exibe o modal
+            modal.classList.remove('hidden');
+            modal.classList.add('show');
+
+            // Redireciona para o WhatsApp após alguns segundos
+            setTimeout(() => {
+                modal.classList.remove('show');
+                modal.classList.add('hidden');
+                window.location.href = whatsappURL;
+            }, 5000);
+        }
+
+        $(document).ready(function () {
+            $('#phone').inputmask('(99) 99999-9999');
+        });
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXXXXX-X');
+    </script>
+</body>
+
+</html>

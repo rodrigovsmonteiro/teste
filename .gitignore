@@ -1,0 +1,23 @@
+
+### .gitignore
+
+Crie um arquivo `.gitignore` para excluir arquivos e pastas desnecessárias do controle de versão:
+
+```plaintext
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+
+# Backup files
+*.bak
+*.tmp
+
+# Ignore specific files
+.DS_Store
+Thumbs.db

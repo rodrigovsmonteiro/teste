@@ -1,0 +1,230 @@
+
+/* Personalização do Swiper */
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #0497ce;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0497ce;
+}
+
+.swiper-pagination {
+    margin-top: 50px;
+    position: relative;
+}
+
+/* Efeitos de rolagem */
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    color: #0497ce;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.scroll-down i {
+    font-size: 24px;
+}
+
+/* Efeito de digitação */
+.typing {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 2px;
+    height: 1.2em;
+    background-color: #0497ce;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Estilo dos cards */
+.h-card {
+    @apply flex flex-col items-center text-center p-5 rounded-lg shadow-md transition-transform duration-300;
+}
+
+.h-card img {
+    @apply w-full h-auto rounded-lg mb-2;
+}
+
+.h-card:hover {
+    transform: translateY(-5px);
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Navbar animation */
+.navbar {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Featured Articles Section adjustments */
+.featured-article-card {
+    @apply flex flex-col justify-between h-88 w-4/5 p-2 bg-white rounded-lg shadow-md transition-transform duration-300;
+}
+
+.featured-article-card img {
+    @apply h-52 w-full object-cover rounded-lg;
+}
+
+.featured-article-card h3 {
+    @apply text-base my-2 text-center overflow-hidden text-ellipsis h-12;
+}
+
+.featured-article-card h4 {
+    @apply text-sm my-1 text-center;
+}
+
+.featured-article-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    @apply bg-gray-100 p-2 rounded flex items-center;
+}
+
+.breadcrumb ol {
+    @apply flex list-none;
+}
+
+.breadcrumb ol li {
+    @apply mr-2;
+}
+
+.breadcrumb ol li a {
+    @apply text-blue-500 hover:text-blue-700 no-underline;
+}
+
+.breadcrumb ol li::after {
+    content: '>';
+    @apply ml-2 text-gray-400;
+}
+
+.breadcrumb ol li:last-child::after {
+    content: '';
+}
+
+/* Modal */
+.hidden {
+    @apply hidden;
+}
+
+#modalForm,
+#contactModal {
+    @apply fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden;
+}
+
+.modal-content {
+    @apply bg-white p-8 rounded-lg shadow-lg w-full max-w-lg;
+}
+
+.modal-header {
+    @apply flex justify-between items-center border-b pb-3;
+}
+
+.modal-close {
+    @apply text-gray-500 hover:text-sky-600 cursor-pointer;
+}
+
+.modal-body {
+    @apply mt-4;
+}
+
+.testimonial-card {
+    width: 100%;
+    max-width: 300px;
+    min-height: 150px;
+    max-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.full-width-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.full-width-input .iti {
+    flex-grow: 1;
+}
+
+.full-width-input .iti__selected-flag {
+    flex-shrink: 0;
+}
+
+.full-width-input input {
+    flex-grow: 1;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#consultoria-dropdown {
+    left: 100%;
+    top: 0;
+    white-space: nowrap; /* Evita quebra de linha nos itens do dropdown */
+}
+
+#consultoria-dropdown-mobile {
+    left: 100%;
+    top: 0;
+    white-space: nowrap; /* Evita quebra de linha nos itens do dropdown */
+}
+
+.rotate-right {
+    transform: rotate(-90deg);
+}
